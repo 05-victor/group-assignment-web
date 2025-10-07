@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Our Team - Group Overview</title>
+    <link rel="stylesheet" href="default.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+      <nav class="main-nav">
+        <div class="logo">
+          <i class="fas fa-users-cog"></i>
+          <span>Team Portal</span>
+        </div>
+        <ul>
+          <li><a href="#hero" class="active">HOME</a></li>
+          <li><a href="#about-group">ABOUT US</a></li>
+          <li><a href="#members">MEMBERS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Main Container -->
+    <main class="main-container">
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="gradient-text">Welcome to</span>
+              <br />
+              <span class="team-name">Our Amazing Team</span>
+            </h1>
+            <p class="hero-subtitle">
+              A group of passionate computer science students dedicated to
+              <br />
+              innovation, creativity, and excellence in technology
+            </p>
+            <div class="hero-buttons">
+              <button
+                class="btn btn-primary"
+                onclick="scrollToSection('members')"
+              >
+                <span>Meet The Team</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <button
+                class="btn btn-secondary"
+                onclick="scrollToSection('about-group')"
+              >
+                <span>Learn More</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>
+          </div>
+          <div class="hero-image-container">
+            <div class="image-wrapper" id="interactivePhotoWrapper">
+              <img
+                src="./image/team.png"
+                alt="Team Photo"
+                class="team-photo"
+                id="teamPhotoImage"
+              />
+              <canvas
+                id="maskCanvas"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  opacity: 0;
+                  pointer-events: none;
+                "
+              ></canvas>
+              <canvas
+                id="hoverCanvas"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  pointer-events: none;
+                  opacity: 0.5;
+                "
+              ></canvas>
+              <div class="image-border"></div>
+              <div class="image-glow"></div>
+              <div
+                id="photoHint"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  background: rgba(0, 0, 0, 0.7);
+                  padding: 8px 16px;
+                  border-radius: 8px;
+                  font-size: 14px;
+                  transition: opacity 0.3s;
+                "
+              >
+                <i class="fas fa-hand-pointer"></i> Click on faces to view
+                profiles
+              </div>
+            </div>
+            <div
+              id="hoverLabel"
+              style="
+                position: absolute;
+                bottom: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                display: none;
+                box-shadow: 0 10px 40px rgba(102, 126, 234, 0.6);
+                white-space: nowrap;
+                z-index: 10;
+              "
+            >
+              <i class="fas fa-user"></i>
+              <span id="hoverLabelText"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Scroll Indicator -->
+        <div class="scroll-indicator">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          <span>Scroll Down</span>
+        </div>
+      </section>
+
+      <!-- About Group Section -->
+      <section class="about-group" id="about-group">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Who We Are</span>
+            <h2 class="section-title">About Our Group</h2>
+            <div class="title-underline"></div>
+          </div>
+
+          <div class="about-content">
+            <div class="about-card">
+              <div class="card-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h3>Our Mission</h3>
+              <p>
+                We are a dedicated team of computer science students at VNU-HCM
+                University of Science, committed to pushing the boundaries of
+                technology and innovation. Our passion drives us to create
+                meaningful solutions and learn together.
+              </p>
+            </div>
+
+            <div class="about-card">
+              <div class="card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3>What We Do</h3>
+              <p>
+                From web development to artificial intelligence, from
+                cybersecurity to data science, we explore diverse fields of
+                computer science. Each member brings unique skills and
+                perspectives to our collaborative projects.
+              </p>
+            </div>
+
+            <div class="about-card">
+              <div class="card-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3>Our Vision</h3>
+              <p>
+                We aim to become leading innovators in technology, contributing
+                to society through cutting-edge solutions. Together, we build
+                not just software, but a better future through collaboration and
+                continuous learning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Group Stats -->
+          <div class="stats-container">
+            <div class="stat-item">
+              <div class="stat-number" data-target="3">0</div>
+              <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="1">0</div>
+              <div class="stat-label">University</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="20">0</div>
+              <div class="stat-label">Average Age</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="100">0</div>
+              <div class="stat-label">Dedication %</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Members Section -->
+      <section class="members-section" id="members">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Our Team</span>
+            <h2 class="section-title">Meet Our Members</h2>
+            <div class="title-underline"></div>
+          </div>
+
+          <div class="members-grid">
+            <!-- Member Card 1 -->
+            <article class="member-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="member-image-wrapper">
+                    <img
+                      src="./image/avatar_TC.jpg"
+                      alt="Võ Cao Tâm Chính"
+                      class="member-image"
+                    />
+                    <div class="image-overlay">
+                      <i class="fas fa-eye"></i>
+                      <span>View Profile</span>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h3 class="member-name">Võ Cao Tâm Chính</h3>
+                    <p class="member-role">
+                      <i class="fas fa-shield-alt"></i> Cybersecurity Enthusiast
+                    </p>
+                    <p class="member-id">
+                      <i class="fas fa-id-card"></i> 23120194
+                    </p>
+                    <div class="member-tags">
+                      <span class="tag">Security</span>
+                      <span class="tag">AI</span>
+                      <span class="tag">Cyber Ops</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="member-quote">
+                      Passionate about cybersecurity and AI, combining
+                      creativity with technology to build secure solutions.
+                    </p>
+                    <a href="profile.html?member=0" class="profile-link">
+                      View Full Profile
+                      <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member Card 2 -->
+            <article class="member-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="member-image-wrapper">
+                    <img
+                      src="./image/avatar.png"
+                      alt="Nguyễn Hưng Thịnh"
+                      class="member-image"
+                    />
+                    <div class="image-overlay">
+                      <i class="fas fa-eye"></i>
+                      <span>View Profile</span>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h3 class="member-name">Nguyễn Hưng Thịnh</h3>
+                    <p class="member-role">
+                      <i class="fas fa-laptop-code"></i> Software Engineer
+                    </p>
+                    <p class="member-id">
+                      <i class="fas fa-id-card"></i> 23120200
+                    </p>
+                    <div class="member-tags">
+                      <span class="tag">Web Dev</span>
+                      <span class="tag">Data Science</span>
+                      <span class="tag">ML</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="member-quote">
+                      Building scalable applications and exploring machine
+                      learning algorithms to solve real-world problems.
+                    </p>
+                    <a href="profile.html?member=1" class="profile-link">
+                      View Full Profile
+                      <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member Card 3 -->
+            <article class="member-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="member-image-wrapper">
+                    <img
+                      src="./image/avatar.png"
+                      alt="Lê Thành Công"
+                      class="member-image"
+                    />
+                    <div class="image-overlay">
+                      <i class="fas fa-eye"></i>
+                      <span>View Profile</span>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h3 class="member-name">Lê Thành Công</h3>
+                    <p class="member-role">
+                      <i class="fas fa-database"></i> Data Scientist
+                    </p>
+                    <p class="member-id">
+                      <i class="fas fa-id-card"></i> 23120222
+                    </p>
+                    <div class="member-tags">
+                      <span class="tag">Data Science</span>
+                      <span class="tag">Analytics</span>
+                      <span class="tag">Python</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="member-quote">
+                      Passionate about data science and building intelligent
+                      systems that make a difference.
+                    </p>
+                    <a href="profile.html?member=2" class="profile-link">
+                      View Full Profile
+                      <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h4>About Us</h4>
+              <p>
+                Computer Science Students<br />
+                VNU-HCM University of Science<br />
+                Ho Chi Minh City, Vietnam
+              </p>
+            </div>
+            <div class="footer-section">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about-group">About</a></li>
+                <li><a href="#members">Members</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Contact</h4>
+              <p>
+                <i class="fas fa-envelope"></i> team@hcmus.edu.vn<br />
+                <i class="fas fa-phone"></i> +84 399 xxx xxx
+              </p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 Our Team. All rights reserved.</p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Audio elements for sound effects -->
+    <audio id="hoverSound" preload="auto">
+      <source src="./sounds/hover.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="clickSound" preload="auto">
+      <source src="./sounds/click.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="socialSound" preload="auto">
+      <source src="./sounds/social.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="home-script.js"></script>
+  </body>
+</html>

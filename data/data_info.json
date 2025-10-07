@@ -1,0 +1,41 @@
+[
+  {
+    "index": 0,
+    "name": "Võ Cao Tâm Chính",
+    "role": "student",
+    "school": "University of Science, VNU-HCM",
+    "about": "I'm a computer science student with a great passion for cybersecurity, artificial intelligence, and offensive/defensive cyber operations. Currently pursuing my degree at the VNU-HCM University of Science, I enjoy combining creativity and technology to build secure and innovative solutions.",
+    "avatar": "./image/avatar_TC.jpg",
+    "age": 20,
+    "location": "Ho Chi Minh City",
+    "university": "VNU-HCM University of Science",
+    "phone": "+84 399xxxxxx",
+    "email": "23120194@student.hcmus.edu.vn"
+  },
+  {
+    "index": 1,
+    "name": "Nguyễn Hưng Thịnh",
+    "role": "student",
+    "school": "University of Science, VNU-HCM",
+    "about": "Passionate about software engineering and data science. I love building scalable applications and exploring machine learning algorithms.",
+    "avatar": "./image/avatar_hthinh.jpg",
+    "age": 20,
+    "location": "Ho Chi Minh City",
+    "university": "VNU-HCM University of Science",
+    "phone": "+84 388xxxxxx",
+    "email": "23120200@student.hcmus.edu.vn"
+  },
+  {
+    "index": 2,
+    "name": "Lê Thành Công",
+    "role": "student",
+    "school": "University of Science, VNU-HCM",
+    "about": "Passionate about software engineering and data science. I love building scalable applications and exploring machine learning algorithms.",
+    "avatar": "./image/avatar_tcong.jpg",
+    "age": 20,
+    "location": "Ho Chi Minh City",
+    "university": "VNU-HCM University of Science",
+    "phone": "+84 388xxxxxx",
+    "email": "23120222@student.hcmus.edu.vn"
+  }
+]

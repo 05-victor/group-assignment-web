@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Member Profile</title>
+    <link rel="stylesheet" href="default.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <div class="header">
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> TEAM HOME</a>
+          </li>
+          <li><a href="#hero">PROFILE</a></li>
+          <li><a href="#personal-details">DETAILS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="scroll-container" id="scrollContainer">
+      <!-- Hero Section -->
+      <div class="hero-section" id="hero">
+        <div id="bio-content">
+          <div class="greeting-box">
+            <h1 class="main-greeting">HELLO,</h1>
+          </div>
+          <p class="self-intro">
+            I'm <span id="hero-name">Võ Cao Tâm Chính</span>,<br />
+            a <span id="hero-role">student</span> at the
+            <span id="hero-school">University of Science, VNU-HCM</span>
+          </p>
+          <button
+            class="cta-button"
+            onclick="scrollToSection('personal-details')"
+          >
+            Learn More <i class="fas fa-arrow-down"></i>
+          </button>
+        </div>
+
+        <div class="avatar-wrapper avatar-wrapper--medium">
+          <div class="avatar" id="avatar">
+            <div class="hair-main"></div>
+            <div class="hair-side-left"></div>
+            <div class="hair-side-right"></div>
+            <div class="head"></div>
+
+            <div class="ear left">
+              <div class="ear-inner"></div>
+            </div>
+            <div class="ear right">
+              <div class="ear-inner"></div>
+            </div>
+
+            <div class="eyebrow left"></div>
+            <div class="eyebrow right"></div>
+
+            <div class="eyes">
+              <div class="eye" id="leftEye">
+                <div class="pupil" id="leftPupil"></div>
+              </div>
+              <div class="eye" id="rightEye">
+                <div class="pupil" id="rightPupil"></div>
+              </div>
+            </div>
+
+            <div class="nose"></div>
+            <div class="nose-tip"></div>
+
+            <div class="mouth" id="mouth">
+              <div class="upper-lip"></div>
+              <div class="lower-lip"></div>
+            </div>
+
+            <div class="jaw-shadow"></div>
+            <div class="neck"></div>
+            <div class="collar"></div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+          <i class="fas fa-chevron-down"></i>
+          <span>Scroll</span>
+        </div>
+      </div>
+
+      <!-- Personal Details Section -->
+      <div id="personal-details">
+        <h1 class="profile-title">PROFILE</h1>
+        <div class="about-section">
+          <div class="about-me-box">
+            <h2 class="about-me">About me</h2>
+            <p class="main-about-me" id="about-text">
+              I'm a passionate computer science student with a keen interest in
+              web development, artificial intelligence, and creating interactive
+              digital experiences. Currently pursuing my degree at VNU-HCM
+              University of Science, I enjoy combining creativity with
+              technology to build innovative solutions.
+            </p>
+          </div>
+
+          <div class="avatar-wrapper avatar-wrapper--small">
+            <img
+              src="./image/avatar.png"
+              alt="Profile Avatar"
+              class="avatar--small"
+              id="profile-avatar"
+            />
+          </div>
+
+          <div class="detail-box">
+            <h2 class="detail-title">Details</h2>
+            <div class="detail-list">
+              <dt>Name:</dt>
+              <dd id="detail-name">Võ Cao Tâm Chính</dd>
+
+              <dt>Age:</dt>
+              <dd id="detail-age">20 years</dd>
+
+              <dt>Location:</dt>
+              <dd id="detail-location">Ho Chi Minh City</dd>
+
+              <dt>University:</dt>
+              <dd id="detail-university">VNU-HCM University of Science</dd>
+
+              <dt>Phone:</dt>
+              <dd id="detail-phone">+84 399xxxxxx</dd>
+
+              <dt>Email:</dt>
+              <dd id="detail-email">23120194@student.hcmus.edu.vn</dd>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer / Contact Section -->
+      <footer id="contact">
+        <div class="contact-card">
+          <div class="left-section">
+            <div
+              class="contact-item"
+              onclick="copyToClipboard('Linh Trung, Hồ Chí Minh, Việt Nam')"
+            >
+              <div class="icon-wrapper">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-info">
+                <span class="primary">Linh Trung</span>
+                <span class="secondary">Hồ Chí Minh, Việt Nam</span>
+              </div>
+            </div>
+
+            <div
+              class="contact-item"
+              onclick="copyToClipboard('2345678910JQKA')"
+            >
+              <div class="icon-wrapper">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-info">
+                <span class="primary">2345678910JQKA</span>
+              </div>
+            </div>
+
+            <div
+              class="contact-item"
+              onclick="copyToClipboard('23120194@student.hcmus.edu.vn')"
+            >
+              <div class="icon-wrapper">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info">
+                <a href="mailto:23120222@student.hcmus.edu.vn"
+                  >23120222@student.hcmus.edu.vn</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="right-section">
+            <h2>About the Portfolio</h2>
+            <p>
+              This interactive portfolio showcases my journey as a computer
+              science student. Built with modern web technologies, it features
+              engaging animations and a user-friendly design. Feel free to
+              explore and connect with me through social media!
+            </p>
+            <div class="social-icons">
+              <div
+                class="social-icon"
+                onclick="window.open('https://facebook.com', '_blank')"
+              >
+                <i class="fab fa-facebook-f"></i>
+                <span class="tooltip">Facebook</span>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://twitter.com', '_blank')"
+              >
+                <i class="fab fa-twitter"></i>
+                <span class="tooltip">Twitter</span>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://linkedin.com', '_blank')"
+              >
+                <i class="fab fa-linkedin-in"></i>
+                <span class="tooltip">LinkedIn</span>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://github.com', '_blank')"
+              >
+                <i class="fab fa-github"></i>
+                <span class="tooltip">GitHub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+      <i class="fas fa-check-circle"></i> Copied to clipboard!
+    </div>
+
+    <!-- Audio elements for sound effects -->
+    <audio id="hoverSound" preload="auto">
+      <source src="./sounds/hover.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="clickSound" preload="auto">
+      <source src="./sounds/click.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="socialSound" preload="auto">
+      <source src="./sounds/social.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
