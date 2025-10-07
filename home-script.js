@@ -1,6 +1,4 @@
-// =============================================================================
 // SOUND EFFECTS MANAGEMENT
-// =============================================================================
 class SoundManager {
   constructor() {
     this.sounds = {
@@ -255,9 +253,7 @@ function initHoverSounds() {
   }
 }
 
-// =============================================================================
 // SCROLL PROGRESS INDICATOR
-// =============================================================================
 function updateScrollProgress() {
   const scrollProgress = document.getElementById("scrollProgress");
   const scrollableHeight =
@@ -266,9 +262,8 @@ function updateScrollProgress() {
   scrollProgress.style.width = scrolled + "%";
 }
 
-// =============================================================================
 // HEADER SCROLL EFFECT
-// =============================================================================
+
 function handleHeaderScroll() {
   const header = document.querySelector(".header");
   if (window.scrollY > 50) {
@@ -278,9 +273,8 @@ function handleHeaderScroll() {
   }
 }
 
-// =============================================================================
 // SMOOTH SCROLL TO SECTION
-// =============================================================================
+
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
@@ -291,9 +285,8 @@ function scrollToSection(sectionId) {
   }
 }
 
-// =============================================================================
 // ACTIVE NAVIGATION LINK
-// =============================================================================
+
 function updateActiveNav() {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".main-nav a");
@@ -317,9 +310,8 @@ function updateActiveNav() {
   });
 }
 
-// =============================================================================
 // ANIMATE STATS COUNTER
-// =============================================================================
+
 function animateStats() {
   const stats = document.querySelectorAll(".stat-number");
   const observerOptions = {
@@ -356,9 +348,8 @@ function animateCounter(element) {
   }, 16);
 }
 
-// =============================================================================
 // BACK TO TOP BUTTON
-// =============================================================================
+
 function setupBackToTop() {
   const backToTopBtn = document.getElementById("backToTop");
 
@@ -378,9 +369,8 @@ function setupBackToTop() {
   });
 }
 
-// =============================================================================
 // INTERSECTION OBSERVER FOR ANIMATIONS
-// =============================================================================
+
 function setupScrollAnimations() {
   const animatedElements = document.querySelectorAll(
     ".about-card, .member-card, .stat-item"
@@ -408,9 +398,8 @@ function setupScrollAnimations() {
   });
 }
 
-// =============================================================================
 // MEMBER CARD CLICK HANDLER
-// =============================================================================
+
 function setupMemberCards() {
   const memberCards = document.querySelectorAll(".member-card");
 
@@ -426,9 +415,8 @@ function setupMemberCards() {
   });
 }
 
-// =============================================================================
 // PARALLAX EFFECT FOR HERO SECTION
-// =============================================================================
+
 function setupParallax() {
   const heroImage = document.querySelector(".hero-image-container");
 
@@ -440,9 +428,8 @@ function setupParallax() {
   });
 }
 
-// =============================================================================
 // DYNAMIC GRADIENT TEXT ANIMATION
-// =============================================================================
+
 function animateGradientText() {
   const gradientTexts = document.querySelectorAll(".gradient-text");
 
@@ -457,9 +444,8 @@ function animateGradientText() {
   });
 }
 
-// =============================================================================
 // MOUSE CURSOR FOLLOWER (DESKTOP ONLY)
-// =============================================================================
+
 function setupCursorFollower() {
   if (window.innerWidth > 768) {
     const cursor = document.createElement("div");
@@ -523,9 +509,8 @@ function setupCursorFollower() {
   }
 }
 
-// =============================================================================
 // LOAD MEMBER DATA FROM JSON
-// =============================================================================
+
 async function loadMemberData() {
   try {
     const response = await fetch("./data/data_info.json");
@@ -570,9 +555,8 @@ async function loadMemberData() {
   }
 }
 
-// =============================================================================
 // KEYBOARD NAVIGATION
-// =============================================================================
+
 function setupKeyboardNav() {
   document.addEventListener("keydown", (e) => {
     // Arrow Down - Scroll to next section
@@ -620,9 +604,8 @@ function setupKeyboardNav() {
   });
 }
 
-// =============================================================================
 // LAZY LOAD IMAGES
-// =============================================================================
+
 function setupLazyLoading() {
   const images = document.querySelectorAll("img[data-src]");
 
@@ -640,9 +623,8 @@ function setupLazyLoading() {
   images.forEach((img) => imageObserver.observe(img));
 }
 
-// =============================================================================
 // EASTER EGG: KONAMI CODE
-// =============================================================================
+
 function setupEasterEgg() {
   const konamiCode = [
     "ArrowUp",
@@ -737,9 +719,8 @@ function activateEasterEgg() {
   }, 3000);
 }
 
-// =============================================================================
 // PERFORMANCE OPTIMIZATION
-// =============================================================================
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -757,9 +738,8 @@ const debouncedScrollHandler = debounce(() => {
   updateActiveNav();
 }, 100);
 
-// =============================================================================
 // INITIALIZATION
-// =============================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
   // Load member data first
   loadMemberData();
@@ -844,9 +824,8 @@ window.addEventListener("load", () => {
 // Export functions for use in HTML onclick attributes
 window.scrollToSection = scrollToSection;
 
-// =============================================================================
 // INTERACTIVE TEAM PHOTO - FACE CLICK DETECTION
-// =============================================================================
+
 let maskImageData = null;
 let currentHoveredPerson = null;
 

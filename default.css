@@ -56,6 +56,10 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -64,6 +68,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
+  /* Enable smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ANIMATED BACKGROUND */
@@ -1387,6 +1393,8 @@ body {
     var(--bg-tertiary) 100%
   );
   transition: background 0.5s ease;
+  /* Enable smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -1630,6 +1638,9 @@ body {
   align-items: center;
   position: relative;
   animation: fadeIn 1.5s ease-out;
+  /* Prevent unwanted touch actions */
+  touch-action: pan-y pinch-zoom;
+  -webkit-touch-callout: none;
 }
 
 @keyframes fadeIn {
@@ -1649,6 +1660,15 @@ body {
   transition: transform 0.3s ease;
   animation: avatarEntrance 1.5s ease-out;
   cursor: pointer;
+  /* Prevent text selection and improve touch */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  /* Enable GPU acceleration for smooth animations */
+  will-change: transform;
+  /* Prevent tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes avatarEntrance {
@@ -2389,8 +2409,20 @@ footer {
   transform: translateX(0);
 }
 
-/* Responsive adjustments */
+/* ===================================================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   =================================================================== */
+
+/* Large Tablets and Small Desktops (1024px and below) */
 @media (max-width: 1024px) {
+  :root {
+    --container-width: 100%;
+  }
+
+  .main-nav {
+    padding: 0 30px;
+  }
+
   .about-section {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2403,30 +2435,652 @@ footer {
 
   .hero-section {
     flex-direction: column;
+    padding: 100px 30px 60px;
+  }
+
+  #bio-content {
+    text-align: center;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  .avatar-wrapper--medium .avatar {
+    /* Scale avatar proportionally for large tablet */
+    transform: scale(0.857); /* 300/350 = 0.857 */
+    transform-origin: center center;
+  }
+
+  .avatar-wrapper--medium .avatar:hover {
+    transform: scale(0.9); /* Slightly larger on hover */
+  }
+
+  .avatar-wrapper--medium .avatar.clicked {
+    animation: celebrateLargeTablet 0.6s ease;
+  }
+
+  @keyframes celebrateLargeTablet {
+    0%,
+    100% {
+      transform: scale(0.9) rotate(0deg);
+    }
+    25% {
+      transform: scale(0.943) rotate(-5deg);
+    }
+    75% {
+      transform: scale(0.943) rotate(5deg);
+    }
+  }
+
+  .avatar-wrapper--small .avatar--small {
+    width: 200px;
+    height: 200px;
   }
 }
 
+/* Tablets (768px and below) */
 @media (max-width: 768px) {
+  /* Navigation */
+  .header {
+    height: 70px;
+  }
+
+  .main-nav {
+    padding: 0 20px;
+  }
+
+  .main-nav ul {
+    gap: 4px;
+  }
+
+  .main-nav a {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .scroll-progress {
+    top: 70px;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 80px 20px 50px;
+    min-height: 100vh;
+  }
+
+  .main-greeting {
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+
+  .self-intro {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  #bio-content {
+    padding: 0 20px;
+  }
+
+  .greeting-box {
+    padding: 15px 25px;
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  .avatar-wrapper--medium .avatar {
+    /* Scale avatar proportionally for tablet */
+    transform: scale(0.8); /* 280/350 = 0.8 */
+    transform-origin: center center;
+  }
+
+  .avatar-wrapper--medium .avatar:hover {
+    transform: scale(0.84); /* Slightly larger on hover */
+  }
+
+  .avatar-wrapper--medium .avatar.clicked {
+    animation: celebrateTablet 0.6s ease;
+  }
+
+  @keyframes celebrateTablet {
+    0%,
+    100% {
+      transform: scale(0.84) rotate(0deg);
+    }
+    25% {
+      transform: scale(0.88) rotate(-5deg);
+    }
+    75% {
+      transform: scale(0.88) rotate(5deg);
+    }
+  }
+
+  /* Personal Details Section */
+  #personal-details {
+    padding: 60px 30px 40px;
+  }
+
+  .profile-title {
+    font-size: 45px;
+    margin-bottom: 40px;
+  }
+
+  .about-section {
+    gap: 30px;
+  }
+
+  .about-me-box,
+  .detail-box {
+    padding: 30px;
+  }
+
+  .about-me,
+  .detail-title {
+    font-size: 26px;
+  }
+
+  .main-about-me {
+    font-size: 16px;
+  }
+
+  .avatar-wrapper--small .avatar--small {
+    width: 180px;
+    height: 180px;
+  }
+
+  .detail-list {
+    gap: 15px 20px;
+  }
+
+  /* Footer/Contact Section */
   .contact-card {
     grid-template-columns: 1fr;
     padding: 40px 30px;
     gap: 40px;
   }
 
-  .main-greeting {
-    font-size: 50px;
+  .left-section {
+    order: 2;
   }
 
-  .self-intro {
+  .right-section {
+    order: 1;
+  }
+
+  .right-section h2 {
     font-size: 24px;
   }
 
-  #bio-content {
-    padding: 0 30px;
+  .right-section p {
+    font-size: 15px;
   }
 
+  .social-icons {
+    justify-content: center;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    bottom: 30px;
+  }
+
+  .scroll-indicator i {
+    font-size: 24px;
+  }
+
+  .scroll-indicator span {
+    font-size: 12px;
+  }
+
+  /* Copy Notification */
+  .copy-notification {
+    right: 20px;
+    top: 90px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Mute Button */
+  #muteToggle {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  /* Navigation - Compact mobile version */
+  .header {
+    height: 60px;
+  }
+
+  .main-nav {
+    padding: 0 15px;
+  }
+
+  .main-nav ul {
+    gap: 2px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav a {
+    padding: 6px 12px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .scroll-progress {
+    top: 60px;
+    height: 2px;
+  }
+
+  /* Hero Section - Mobile optimized */
+  .hero-section {
+    padding: 70px 15px 40px;
+    min-height: 100vh;
+  }
+
+  #bio-content {
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  .greeting-box {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+  }
+
+  .main-greeting {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .self-intro {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .cta-button {
+    padding: 10px 25px;
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  /* Avatar - Mobile size with preserved aspect ratio */
+  .avatar-wrapper--medium {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Use transform scale to maintain perfect aspect ratio */
+  }
+
+  .avatar-wrapper--medium .avatar {
+    /* Keep original dimensions but scale the wrapper */
+    transform: scale(0.629); /* 220/350 = 0.629 */
+    transform-origin: center center;
+  }
+
+  .avatar-wrapper--medium .avatar:hover {
+    transform: scale(0.66); /* Slightly larger on hover */
+  }
+
+  .avatar-wrapper--medium .avatar.clicked {
+    /* Maintain scale during click animation */
+    animation: celebrateMobile 0.6s ease;
+  }
+
+  @keyframes celebrateMobile {
+    0%,
+    100% {
+      transform: scale(0.66) rotate(0deg);
+    }
+    25% {
+      transform: scale(0.69) rotate(-5deg);
+    }
+    75% {
+      transform: scale(0.69) rotate(5deg);
+    }
+  }
+
+  /* Personal Details Section - Mobile */
   #personal-details {
-    padding: 60px 30px 40px;
+    padding: 50px 20px 30px;
+    min-height: auto;
+  }
+
+  .profile-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .profile-title::after {
+    width: 60px;
+    height: 3px;
+    bottom: -10px;
+  }
+
+  .about-section {
+    gap: 25px;
+  }
+
+  .about-me-box,
+  .detail-box {
+    padding: 25px 20px;
+  }
+
+  .about-me,
+  .detail-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+  }
+
+  .about-me::before,
+  .detail-title::before {
+    width: 4px;
+  }
+
+  .main-about-me {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Avatar in details section - Mobile */
+  .avatar-wrapper--small .avatar--small {
+    width: 150px;
+    height: 150px;
+    border-width: 3px;
+  }
+
+  /* Detail list - Mobile layout */
+  .detail-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .detail-list dt {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .detail-list dd {
+    font-size: 14px;
+    padding-left: 28px;
+  }
+
+  /* Footer/Contact Section - Mobile */
+  footer {
+    min-height: auto;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .contact-item {
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+  }
+
+  .icon-wrapper i {
+    font-size: 20px;
+  }
+
+  .contact-info .primary {
+    font-size: 16px;
+  }
+
+  .contact-info .secondary {
+    font-size: 14px;
+  }
+
+  .right-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .right-section p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .social-icons {
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  .social-icon i {
+    font-size: 20px;
+  }
+
+  /* Scroll Indicator - Mobile */
+  .scroll-indicator {
+    bottom: 20px;
+  }
+
+  .scroll-indicator i {
+    font-size: 20px;
+  }
+
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* Copy Notification - Mobile */
+  .copy-notification {
+    right: 15px;
+    left: 15px;
+    top: 80px;
+    padding: 10px 15px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* Mute Button - Mobile */
+  #muteToggle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    bottom: 12px;
+    right: 12px;
+  }
+
+  /* Tooltips - Disable on mobile */
+  .tooltip {
+    display: none;
+  }
+
+  /* Background particles - Reduce on mobile */
+  .hero-section::before {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-section::after {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Small Mobile Devices (360px and below) */
+@media (max-width: 360px) {
+  .main-greeting {
+    font-size: 30px;
+  }
+
+  .self-intro {
+    font-size: 16px;
+  }
+
+  /* Avatar scaling for very small screens */
+  .avatar-wrapper--medium .avatar {
+    transform: scale(0.571); /* 200/350 = 0.571 */
+  }
+
+  .avatar-wrapper--medium .avatar:hover {
+    transform: scale(0.6);
+  }
+
+  .avatar-wrapper--medium .avatar.clicked {
+    animation: celebrateSmallMobile 0.6s ease;
+  }
+
+  @keyframes celebrateSmallMobile {
+    0%,
+    100% {
+      transform: scale(0.6) rotate(0deg);
+    }
+    25% {
+      transform: scale(0.629) rotate(-5deg);
+    }
+    75% {
+      transform: scale(0.629) rotate(5deg);
+    }
+  }
+
+  .profile-title {
+    font-size: 28px;
+  }
+
+  .about-me,
+  .detail-title {
+    font-size: 20px;
+  }
+
+  .main-about-me {
+    font-size: 14px;
+  }
+
+  .contact-info .primary {
+    font-size: 15px;
+  }
+
+  .right-section h2 {
+    font-size: 18px;
+  }
+}
+
+/* MOBILE TOUCH OPTIMIZATIONS */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch target sizes to at least 44x44px (Apple guidelines) */
+  .main-nav a,
+  .cta-button,
+  .social-icon,
+  .contact-item,
+  #muteToggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .main-nav a:hover,
+  .cta-button:hover,
+  .social-icon:hover,
+  .contact-item:hover,
+  .about-me-box:hover,
+  .detail-box:hover,
+  .avatar--small:hover {
+    transform: none;
+  }
+
+  /* Use tap/active states instead */
+  .main-nav a:active,
+  .cta-button:active,
+  .social-icon:active {
+    transform: scale(0.95);
+  }
+
+  /* Disable scroll snap on touch devices for better control */
+  .scroll-container {
+    scroll-snap-type: none;
+  }
+
+  /* Optimize animations for touch devices */
+  .hero-section::before,
+  .hero-section::after {
+    animation-duration: 12s;
+  }
+}
+
+/* LANDSCAPE MODE ON MOBILE */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding: 60px 20px 40px;
+  }
+
+  #bio-content {
+    padding: 0 20px;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 230px;
+  }
+
+  .scroll-indicator {
+    bottom: 15px;
+  }
+
+  .scroll-indicator i {
+    font-size: 18px;
+  }
+
+  .scroll-indicator span {
+    font-size: 10px;
+  }
+}
+
+/* ACCESSIBILITY IMPROVEMENTS */
+
+/* Ensure focus states are visible for keyboard navigation */
+@media (prefers-reduced-motion: no-preference) {
+  .main-nav a:focus,
+  .cta-button:focus,
+  .social-icon:focus,
+  .contact-item:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
