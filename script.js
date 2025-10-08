@@ -7,7 +7,7 @@ class SoundManager {
       social: document.getElementById("socialSound"),
     };
     this.isMuted = false;
-    this.volume = 0.1;
+    this.volume = 0.3;
     this.init();
   }
 
@@ -42,7 +42,7 @@ class SoundManager {
   }
 
   setVolume(volume) {
-    this.volume = Math.max(0, Math.min(0.1, volume));
+    this.volume = Math.max(0, Math.min(0.3, volume));
     Object.values(this.sounds).forEach((sound) => {
       if (sound) {
         sound.volume = this.volume;
